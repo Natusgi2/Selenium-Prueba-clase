@@ -53,21 +53,21 @@ public class LoginTest {
         );
 
         // 5. Interacción con el Frontend (Escribir y Presionar Enter)
-        emailBox.sendKeys("ivan.luna@email.com", Keys.TAB);
-        passBox.sendKeys("123456", Keys.ENTER);
+        emailBox.sendKeys("ivan.luna@email.com", Keys.TAB); //modificar el email para que sea valido
+        passBox.sendKeys("123456", Keys.ENTER); // modificar la contraseña para que sea valida
 
         // 6. Esperar el resultado
 
         //Opcion si el div se renderiza
         // Localizador XPath que busca la clase y el texto exacto
         By alertaConTexto = By.xpath("//div[contains(@class, 'alert-danger') and text()='Credenciales de Mock inválidas']");
-
+        // hay que modificar alertacontexto, para que coincida y pase la prueba correctamente
         // Espera hasta que el elemento sea completamente visible en la pantalla
         WebElement mensaje = wait.until(ExpectedConditions.visibilityOfElementLocated(alertaConTexto));
 
         // 2. ASERCIÓN DEL FRAMEWORK (Suma la validación formal al test)
         Assert.assertTrue(mensaje.getText().equals("Credenciales de Mock inválidas"), "La alerta de error no mostró el texto esperado.");
-
+        // modificar el texto de la alerta para que coincida con el mensaje esperado y pase la prueba correctamente
         // Registrar éxito en el reporte si la aserción pasa
         testLog.pass("La alerta con el texto de credenciales inválidas apareció correctamente.");
     }
